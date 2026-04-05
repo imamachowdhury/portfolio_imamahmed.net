@@ -85,20 +85,6 @@ export default function Home() {
       {/* Reel Films / Vertical Shorts Section */}
       <ShortsGallery />
 
-      {/* Gear Highlight (Mini) */}
-      <section className="py-32 bg-zinc-950/50 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-           <span className="text-[10px] tracking-[0.5em] font-bold uppercase text-zinc-500 mb-8 block">Crafted With Precision</span>
-           <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter mb-12">
-             Sony a6700 <span className="text-zinc-700">+</span> Sigma 18-50mm
-           </h2>
-           <div className="flex justify-center">
-             <Link href="/about" className="px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] rounded-full hover:bg-zinc-200 transition-colors">
-               Explore My Gear
-             </Link>
-           </div>
-        </div>
-      </section>
 
     </main>
   );
