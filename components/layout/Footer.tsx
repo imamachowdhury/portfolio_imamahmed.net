@@ -1,8 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Film } from "lucide-react";
 import { FaYoutube, FaFacebook, FaInstagram, FaXTwitter, FaGithub } from "react-icons/fa6";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Hide footer on admin routes
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   const socials = [
     { name: "YouTube", href: "https://www.youtube.com/@StoryGhorCreation", icon: FaYoutube },
     { name: "Facebook", href: "https://www.facebook.com/imam.giff", icon: FaFacebook },
