@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Film, User, BookOpen, DollarSign, PenTool } from "lucide-react";
+import { Film, User, BookOpen, DollarSign, PenTool, Newspaper } from "lucide-react";
 
 const navItems = [
   { name: "Portfolio", href: "/#portfolio", icon: Film },
   { name: "About", href: "/about", icon: User },
   { name: "Academy", href: "/academy", icon: BookOpen },
   { name: "POV", href: "/pov", icon: PenTool },
+  { name: "Blog", href: "/blog", icon: Newspaper },
   { name: "Pricing", href: "/pricing", icon: DollarSign },
 ];
 
