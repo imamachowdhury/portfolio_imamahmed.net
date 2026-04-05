@@ -26,7 +26,7 @@ const povEntries = [
     excerpt: "Why narratives matter in public discourse. A look at how structural storytelling shapes modern political campaigns and social movements.",
     category: "Perspective",
     date: "Feb 22, 2026",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead27d8?w=800&auto=format&fit=crop&q=60",
+    image: "https://placehold.co/800x1200/18181b/3b82f6?text=Perspective",
     icon: Eye,
     color: "blue",
   },
@@ -94,7 +94,7 @@ export default function PovPage() {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredEntries.map((entry, idx) => (
               <motion.article 
@@ -104,45 +104,40 @@ export default function PovPage() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
                 key={entry.title}
-                className="group relative p-6 md:p-8 rounded-[2rem] bg-zinc-900 border border-white/5 hover:border-blue-500/30 overflow-hidden flex flex-col md:flex-row gap-6 justify-between items-start md:items-center transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.15)]"
+                className="group relative p-4 rounded-[2rem] bg-zinc-900 border border-white/5 hover:border-blue-500/30 overflow-hidden flex flex-col transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.15)]"
               >
                 {/* Background Glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                <div className="flex flex-col md:flex-row gap-8 w-full z-10 cursor-pointer items-start md:items-center">
-                   {/* Poster/Cover Image */}
-                   <div className="w-full md:w-32 h-48 md:h-40 rounded-xl overflow-hidden flex-shrink-0 relative border border-white/10 shadow-xl">
-                     <img src={entry.image} alt={entry.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="relative w-full aspect-[3/4] rounded-[1.5rem] overflow-hidden mb-6 z-10 border border-white/10 shadow-xl cursor-pointer">
+                   <img src={entry.image} alt={entry.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                   
+                   {/* Floating Tags over image */}
+                   <div className="absolute top-4 left-4 flex flex-col gap-2">
+                     <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 w-fit">
+                       {entry.category}
+                     </span>
                    </div>
-
-                   <div className="flex-1 relative w-full">
-                      <div className="flex flex-wrap items-center gap-4 mb-3">
-                         <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white bg-white/10 px-3 py-1 rounded-sm border-l-2 border-blue-500">
-                           {entry.category}
-                         </span>
-                         <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
-                           {entry.date}
-                         </span>
-                         <div className="md:ml-auto flex items-center gap-1.5 bg-black/50 px-3 py-1.5 rounded-lg border border-white/10 shadow-inner block w-fit">
-                           <Star size={14} className="text-amber-500 fill-amber-500" />
-                           <span className="text-sm font-black text-white leading-none tracking-tighter">{entry.rating}</span>
-                           <span className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest leading-none">/ 10</span>
-                         </div>
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-2">
-                        {entry.title}
-                      </h2>
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold mb-4 drop-shadow-md">
-                        {entry.creator}
-                      </p>
-                      <p className="text-zinc-400 text-sm leading-relaxed max-w-2xl line-clamp-3">
-                        {entry.excerpt}
-                      </p>
+                   <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-xl">
+                      <Star size={12} className="text-amber-500 fill-amber-500" />
+                      <span className="text-xs font-black text-white leading-none tracking-tighter">{entry.rating}</span>
                    </div>
                 </div>
 
-                <div className="hidden md:flex relative z-10 items-center justify-center w-12 h-12 rounded-full bg-zinc-950 border border-white/10 group-hover:bg-blue-500 group-hover:border-blue-500 transition-colors flex-shrink-0 cursor-pointer shadow-lg shadow-black/50">
-                   <ArrowRight className="text-zinc-500 group-hover:text-white transition-colors" size={20} />
+                <div className="flex flex-col flex-1 px-2 pb-2 z-10 cursor-pointer">
+                   <h2 className="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">
+                     {entry.title}
+                   </h2>
+                   <p className="text-[9px] uppercase tracking-[0.2em] text-zinc-400 font-bold mb-4 drop-shadow-md">
+                     {entry.creator} <span className="mx-2 opacity-30">•</span> {entry.date}
+                   </p>
+                   <p className="text-zinc-500 text-xs leading-relaxed line-clamp-4 mb-6 flex-1">
+                     {entry.excerpt}
+                   </p>
+                   
+                   <div className="flex items-center gap-2 mt-auto text-[10px] font-black uppercase tracking-[0.2em] text-blue-500 group-hover:text-white transition-colors">
+                     Read POV <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                   </div>
                 </div>
               </motion.article>
             ))}
