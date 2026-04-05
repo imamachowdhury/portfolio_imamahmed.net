@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const plans = [
   {
     name: "Freelance Editor",
-    price: "$299",
+    price: "৳35,000",
     description: "Perfect for single project editing and color grading services.",
     features: [
       "2-4 day delivery time",
@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: "All-Access Pass",
-    price: "$499",
+    price: "৳60,000",
     description: "The complete cinematic education and community access.",
     features: [
       "Access to ALL current courses",
@@ -97,7 +97,10 @@ export default function PricingPage() {
                <p className="text-zinc-500 text-xs mb-8 font-medium leading-relaxed uppercase tracking-widest">{plan.description}</p>
                
                <div className="flex items-baseline gap-2 mb-10 pb-10 border-b border-white/5">
-                 <span className="text-4xl font-black text-white italic tracking-tighter">{plan.price}</span>
+                 <span className="text-4xl font-black text-white italic tracking-tighter">
+                   {plan.price}
+                   {plan.price !== "Custom" && <span className="text-2xl text-blue-500 ml-1">BDT</span>}
+                 </span>
                  {plan.price !== "Custom" && <span className="text-zinc-700 text-xs font-bold uppercase tracking-widest">/ Project</span>}
                </div>
 
@@ -131,14 +134,6 @@ export default function PricingPage() {
            </button>
         </div>
       </div>
-
-      <footer className="py-20 border-t border-white/5 bg-black text-center">
-         <div className="flex justify-center gap-10 mb-8 grayscale opacity-50">
-           <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" className="h-6" />
-           <Camera className="text-white" size={24} />
-         </div>
-         <p className="text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-600 italic">Payments secured by Stripe. Film industry standard.</p>
-      </footer>
     </main>
   );
 }
