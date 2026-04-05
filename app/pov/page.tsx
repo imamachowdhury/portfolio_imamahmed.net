@@ -94,7 +94,7 @@ export default function PovPage() {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredEntries.map((entry, idx) => (
               <motion.article 
@@ -104,39 +104,29 @@ export default function PovPage() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
                 key={entry.title}
-                className="group relative p-4 rounded-[2rem] bg-zinc-900 border border-white/5 hover:border-blue-500/30 overflow-hidden flex flex-col transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.15)]"
+                className="group p-5 rounded-2xl bg-zinc-900 border border-white/5 hover:border-white/10 flex flex-col transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-2xl"
               >
-                {/* Background Glow */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                <div className="relative w-full aspect-[3/4] rounded-[1.5rem] overflow-hidden mb-6 z-10 border border-white/10 shadow-xl cursor-pointer">
+                {/* Poster/Cover Image - Cleanly bounded with inset top */}
+                <div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden shadow-lg mb-4 bg-black">
                    <img src={entry.image} alt={entry.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                   
-                   {/* Floating Tags over image */}
-                   <div className="absolute top-4 left-4 flex flex-col gap-2">
-                     <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 w-fit">
-                       {entry.category}
-                     </span>
-                   </div>
-                   <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-xl">
-                      <Star size={12} className="text-amber-500 fill-amber-500" />
-                      <span className="text-xs font-black text-white leading-none tracking-tighter">{entry.rating}</span>
-                   </div>
                 </div>
 
-                <div className="flex flex-col flex-1 px-2 pb-2 z-10 cursor-pointer">
-                   <h2 className="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">
+                <div className="flex flex-col flex-1">
+                   {/* Title */}
+                   <h2 className="text-base font-bold text-white mb-1 line-clamp-2 leading-tight">
                      {entry.title}
                    </h2>
-                   <p className="text-[9px] uppercase tracking-[0.2em] text-zinc-400 font-bold mb-4 drop-shadow-md">
-                     {entry.creator} <span className="mx-2 opacity-30">•</span> {entry.date}
-                   </p>
-                   <p className="text-zinc-500 text-xs leading-relaxed line-clamp-4 mb-6 flex-1">
-                     {entry.excerpt}
-                   </p>
                    
-                   <div className="flex items-center gap-2 mt-auto text-[10px] font-black uppercase tracking-[0.2em] text-blue-500 group-hover:text-white transition-colors">
-                     Read POV <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                   {/* Creator & Date */}
+                   <p className="text-xs text-zinc-400 mb-2 font-medium line-clamp-1">
+                     {entry.creator}, {entry.date.split(" ")[2]}
+                   </p>
+
+                   {/* Rating Line */}
+                   <div className="flex items-center gap-1.5 mt-auto pt-2">
+                     <span className="text-xs font-bold text-zinc-300">{entry.rating}/10</span>
+                     <Star size={12} className="text-amber-500 fill-amber-500" />
+                     <span className="text-[10px] text-zinc-500 font-medium ml-1">({entry.category})</span>
                    </div>
                 </div>
               </motion.article>
