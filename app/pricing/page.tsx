@@ -18,7 +18,7 @@ const plans = [
     ],
     button: "Book Edit",
     icon: Zap,
-    color: "zinc-500",
+    color: "gray-400",
   },
   {
     name: "All-Access Pass",
@@ -34,7 +34,7 @@ const plans = [
     button: "Join Academy",
     highlight: true,
     icon: Star,
-    color: "blue-500",
+    color: "black",
   },
   {
     name: "Direct Booking",
@@ -49,27 +49,27 @@ const plans = [
     ],
     button: "Contact Me",
     icon: Camera,
-    color: "emerald-500",
+    color: "gray-400",
   }
 ];
 
 export default function PricingPage() {
   return (
-    <main className="relative min-h-screen w-full bg-black">
+    <main className="relative min-h-screen w-full bg-white">
       <Navbar />
       
-      <div className="pt-32 pb-32 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-24">
-           <span className="text-[10px] tracking-[0.5em] font-bold uppercase text-blue-500 mb-4 block underline decoration-blue-500/30 underline-offset-8">Invest in your Vision</span>
-           <h1 className="text-5xl md:text-8xl font-black italic uppercase tracking-tight text-white mb-6">
-             Pricing & <span className="text-zinc-700">Services</span>
+      <div className="pt-40 pb-32 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-32">
+           <span className="text-[10px] tracking-[0.5em] font-bold uppercase text-gray-400 mb-6 block">Invest in your Vision</span>
+           <h1 className="text-6xl md:text-[8rem] font-black uppercase tracking-tight text-black mb-10 leading-[0.85]">
+             PRICING & <span className="text-gray-200">SERVICES</span>
            </h1>
-           <p className="max-w-xl mx-auto text-zinc-500 text-sm md:text-base leading-relaxed tracking-wide">
+           <p className="max-w-2xl mx-auto text-gray-500 text-lg md:text-xl font-medium leading-relaxed">
              Transparent pricing for cinematic services and educational content. Choose the path that fits your creative goal.
            </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
            {plans.map((plan, idx) => (
              <motion.div
                key={plan.name}
@@ -77,46 +77,49 @@ export default function PricingPage() {
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.6, delay: idx * 0.1 }}
                viewport={{ once: true }}
-               className={`relative p-10 rounded-[2.5rem] bg-zinc-950 border transition-all hover:-translate-y-2 duration-500 ${
-                 plan.highlight ? 'border-blue-500/30 ring-1 ring-blue-500/20' : 'border-white/5'
+               className={`relative p-12 rounded-[2.5rem] transition-all hover:-translate-y-2 duration-500 flex flex-col ${
+                 plan.highlight 
+                  ? 'bg-black text-white shadow-2xl shadow-black/20 z-10 scale-105' 
+                  : 'bg-gray-50 border border-gray-100 text-black hover:bg-white hover:shadow-2xl hover:shadow-black/5'
                }`}
              >
                {plan.highlight && (
-                 <div className="absolute top-0 right-10 -translate-y-1/2 px-4 py-1 rounded-full bg-blue-500 text-white text-[9px] font-black uppercase tracking-[0.2em] shadow-lg shadow-blue-500/20">
+                 <div className="absolute top-0 right-12 -translate-y-1/2 px-5 py-2 rounded-full bg-white text-black text-[0.6rem] font-black uppercase tracking-[0.2em] shadow-xl">
                     Most Popular
                  </div>
                )}
 
-               <div className={`p-4 rounded-2xl bg-${plan.color}/10 w-fit mb-8`}>
-                  <plan.icon className={`text-${plan.color}`} size={24} />
+               <div className={`p-4 rounded-2xl ${plan.highlight ? 'bg-white/10' : 'bg-gray-200/50'} w-fit mb-10 shadow-inner`}>
+                  <plan.icon className={plan.highlight ? 'text-white' : 'text-black'} size={24} />
                </div>
 
-               <h2 className="text-2xl font-black italic uppercase tracking-tighter text-white mb-2">
+               <h2 className="text-3xl font-black uppercase tracking-tighter mb-3">
                  {plan.name}
                </h2>
-               <p className="text-zinc-500 text-xs mb-8 font-medium leading-relaxed uppercase tracking-widest">{plan.description}</p>
+               <p className={`text-[0.65rem] mb-10 font-bold uppercase tracking-[0.3em] leading-relaxed ${plan.highlight ? 'text-gray-400' : 'text-gray-500'}`}>
+                 {plan.description}
+               </p>
                
-               <div className="flex items-baseline gap-2 mb-10 pb-10 border-b border-white/5">
-                 <span className="text-4xl font-black text-white italic tracking-tighter">
+               <div className={`flex items-baseline gap-2 mb-10 pb-10 border-b ${plan.highlight ? 'border-white/10' : 'border-gray-200'}`}>
+                 <span className="text-5xl font-black italic tracking-tighter">
                    {plan.price}
-                   {plan.price !== "Custom" && <span className="text-2xl text-blue-500 ml-1">BDT</span>}
                  </span>
-                 {plan.price !== "Custom" && <span className="text-zinc-700 text-xs font-bold uppercase tracking-widest">/ Project</span>}
+                 {plan.price !== "Custom" && <span className="text-[0.6rem] font-black uppercase tracking-widest opacity-40 ml-1">/ Project</span>}
                </div>
 
-               <ul className="space-y-4 mb-10">
+               <ul className="space-y-6 mb-12 flex-1">
                  {plan.features.map((feature) => (
-                   <li key={feature} className="flex items-center gap-3 text-xs font-medium text-zinc-400 uppercase tracking-widest group">
-                     <Check size={14} className="text-blue-500/50 group-hover:text-blue-500 transition-colors" />
+                   <li key={feature} className={`flex items-center gap-4 text-[0.7rem] font-bold uppercase tracking-widest ${plan.highlight ? 'text-gray-300' : 'text-gray-500'}`}>
+                     <Check size={16} className={plan.highlight ? 'text-white/50' : 'text-black/20'} />
                      {feature}
                    </li>
                  ))}
                </ul>
 
-               <button className={`w-full py-4 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all ${
+               <button className={`w-full py-5 rounded-full text-[0.7rem] font-black uppercase tracking-[0.3em] transition-all shadow-xl ${
                  plan.highlight 
-                 ? 'bg-blue-500 text-white hover:bg-blue-600 shadow-xl shadow-blue-500/10' 
-                 : 'bg-white text-black hover:bg-zinc-200'
+                  ? 'bg-white text-black hover:bg-gray-200' 
+                  : 'bg-black text-white hover:bg-gray-800'
                }`}>
                  {plan.button}
                </button>
@@ -124,12 +127,12 @@ export default function PricingPage() {
            ))}
         </div>
 
-        <div className="mt-24 p-12 rounded-[2rem] bg-zinc-950/50 border border-white/5 text-center flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="mt-32 p-16 rounded-[3rem] bg-gray-50 border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-10">
            <div className="text-left">
-             <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-2">Need a custom quote?</h3>
-             <p className="text-zinc-500 text-xs uppercase tracking-widest font-medium">For larger agencies or long-term cinematography contracts.</p>
+             <h3 className="text-3xl font-black text-black uppercase tracking-tighter mb-3">Need a custom quote?</h3>
+             <p className="text-gray-500 text-[0.7rem] uppercase tracking-[0.3em] font-bold">For larger agencies or long-term cinematography contracts.</p>
            </div>
-           <button className="px-10 py-4 border border-white/10 rounded-full text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white/5 transition-colors">
+           <button className="px-10 py-5 bg-white border border-gray-200 rounded-full text-black text-[0.7rem] font-black uppercase tracking-[0.3em] hover:border-black transition-all shadow-xl">
               Schedule a Call
            </button>
         </div>

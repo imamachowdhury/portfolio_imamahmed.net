@@ -50,23 +50,24 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Outer subtle glow/trail */}
+      {/* Outer subtle ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-blue-500/30 pointer-events-none z-[100] mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-10 h-10 rounded-full border border-black/10 pointer-events-none z-[100] hidden md:block"
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovering ? 2.5 : 1,
-          backgroundColor: isHovering ? "rgba(59, 130, 246, 0.1)" : "rgba(0,0,0,0)"
+          x: mousePosition.x - 20,
+          y: mousePosition.y - 20,
+          scale: isHovering ? 1.5 : 1,
+          borderColor: isHovering ? "rgba(0, 0, 0, 0.3)" : "rgba(0, 0, 0, 0.1)",
+          backgroundColor: isHovering ? "rgba(0, 0, 0, 0.02)" : "rgba(0, 0, 0, 0)"
         }}
-        transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+        transition={{ type: "spring", bounce: 0, duration: 0.4 }}
       />
       {/* Inner precise dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-white pointer-events-none z-[100] mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-black pointer-events-none z-[100] hidden md:block"
         animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
+          x: mousePosition.x - 3,
+          y: mousePosition.y - 3,
           scale: isHovering ? 0 : 1
         }}
         transition={{ type: "spring", bounce: 0, duration: 0.1 }}

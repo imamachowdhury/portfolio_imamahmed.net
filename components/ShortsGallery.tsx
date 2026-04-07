@@ -10,12 +10,12 @@ const shorts = [
 
 export default function ShortsGallery() {
   return (
-    <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
-      <div className="mb-16">
-        <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white">
-          Reel <span className="text-zinc-500">Films</span>
+    <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto border-t border-gray-100">
+      <div className="mb-20">
+        <h2 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter text-black leading-[0.85]">
+          Reel <span className="text-gray-300">Films</span>
         </h2>
-        <p className="mt-4 text-zinc-400 max-w-md uppercase tracking-widest text-xs font-medium">
+        <p className="mt-6 text-gray-500 max-w-md uppercase tracking-[0.2em] text-[0.7rem] font-bold">
           Vertical cinematic explorations and short-form narratives.
         </p>
       </div>
@@ -30,7 +30,7 @@ export default function ShortsGallery() {
             transition={{ duration: 0.6, delay: i * 0.1 }}
             className="group relative"
           >
-            <div className="aspect-[9/16] w-full rounded-2xl md:rounded-[2.5rem] overflow-hidden bg-zinc-900 border border-white/5 grayscale hover:grayscale-0 transition-all duration-700">
+            <div className="aspect-[9/16] w-full rounded-2xl md:rounded-[2.5rem] overflow-hidden bg-gray-100 border border-gray-100 transition-all duration-700 shadow-xl shadow-black/5">
               <iframe
                 src={`https://www.youtube.com/embed/${short.id}?autoplay=0&controls=1&rel=0&modestbranding=1`}
                 title={short.title}
@@ -39,8 +39,8 @@ export default function ShortsGallery() {
                 allowFullScreen
               ></iframe>
             </div>
-            <div className="mt-4">
-              <h3 className="text-lg font-bold text-white uppercase tracking-tight opacity-50 group-hover:opacity-100 transition-opacity">
+            <div className="mt-8">
+              <h3 className="text-xl font-black text-black uppercase tracking-tight opacity-30 group-hover:opacity-100 transition-opacity">
                 {short.title}
               </h3>
             </div>

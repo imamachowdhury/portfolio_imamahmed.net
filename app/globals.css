@@ -1,22 +1,28 @@
 @import "tailwindcss";
 
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #f9fafb;
+  --card-foreground: #111827;
+  --border: #e5e7eb;
+  --accent: #111827;
+}
+
 @theme {
-  --color-primary: #f8fafc;
-  --color-accent: #3b82f6; 
-  --color-dark-bg: #030405;
-  --color-dark-card: #090b0d;
-  --color-dark-border: #1a1e23;
+  --color-primary: #111827;
+  --color-accent: #000000; 
+  --color-light-bg: #ffffff;
+  --color-light-card: #f9fafb;
+  --color-light-border: #e5e7eb;
   
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
   --font-mono: var(--font-geist-mono), ui-mono-font;
 }
 
-:root {
-  --background: #030405;
-  --foreground: #f8fafc;
-  --card: #090b0d;
-  --card-foreground: #f8fafc;
-  --border: #1a1e23;
+::selection {
+  background-color: #000000;
+  color: #ffffff;
 }
 
 * {
@@ -29,8 +35,4 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.cinematic-gradient {
-  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
 }

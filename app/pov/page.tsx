@@ -26,7 +26,7 @@ const povEntries = [
     excerpt: "Why narratives matter in public discourse. A look at how structural storytelling shapes modern political campaigns and social movements.",
     category: "Perspective",
     date: "Feb 22, 2026",
-    image: "https://placehold.co/800x1200/18181b/3b82f6?text=Perspective",
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&auto=format&fit=crop&q=60",
     icon: Eye,
     color: "blue",
   },
@@ -51,23 +51,23 @@ export default function PovPage() {
     : povEntries.filter(entry => entry.category === activeCategory);
 
   return (
-    <main className="relative min-h-screen w-full bg-black">
+    <main className="relative min-h-screen w-full bg-white">
       <Navbar />
       
-      <div className="pt-32 pb-32 px-6 max-w-5xl mx-auto">
+      <div className="pt-40 pb-32 px-6 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-16 text-center"
+          className="mb-24 text-center"
         >
-          <span className="flex justify-center items-center gap-3 text-[10px] tracking-[0.5em] font-bold uppercase text-blue-500 mb-4">
+          <span className="flex justify-center items-center gap-3 text-[10px] tracking-[0.5em] font-bold uppercase text-gray-400 mb-6">
             <PenTool size={14} /> The Written Word
           </span>
-          <h1 className="text-5xl md:text-8xl font-black italic uppercase tracking-tight text-white mb-6">
-            Point of <span className="text-zinc-700">View</span>
+          <h1 className="text-6xl md:text-[8rem] font-black uppercase tracking-tight text-black mb-10 leading-[0.85]">
+            POINT OF <span className="text-gray-200">VIEW</span>
           </h1>
-          <p className="max-w-xl mx-auto text-zinc-500 text-sm md:text-base leading-relaxed tracking-wide">
+          <p className="max-w-2xl mx-auto text-gray-500 text-lg md:text-xl font-medium leading-relaxed">
             My personal reviews, cinematic breakdowns, and perspectives on art, history, and society.
           </p>
         </motion.div>
@@ -77,16 +77,16 @@ export default function PovPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-16"
+          className="flex flex-wrap justify-center gap-4 mb-24"
         >
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${
+              className={`px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${
                 activeCategory === cat 
-                  ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]" 
-                  : "bg-zinc-900 border border-white/10 text-zinc-400 hover:text-white hover:border-white/30"
+                  ? "bg-black text-white shadow-xl shadow-black/20" 
+                  : "bg-gray-100 border border-gray-100 text-gray-400 hover:text-black hover:border-black/20"
               }`}
             >
               {cat}
@@ -94,7 +94,7 @@ export default function PovPage() {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           <AnimatePresence mode="popLayout">
             {filteredEntries.map((entry, idx) => (
               <motion.article 
@@ -104,29 +104,30 @@ export default function PovPage() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
                 key={entry.title}
-                className="group p-5 rounded-2xl bg-zinc-900 border border-white/5 hover:border-white/10 flex flex-col transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-2xl"
+                className="group p-2 rounded-[2.5rem] bg-white border border-transparent hover:border-gray-100 flex flex-col transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/5"
               >
                 {/* Poster/Cover Image - Cleanly bounded with inset top */}
-                <div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden shadow-lg mb-4 bg-black">
-                   <img src={entry.image} alt={entry.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="relative w-full aspect-[2/3] rounded-[2rem] overflow-hidden shadow-lg mb-6 bg-gray-100">
+                   <img src={entry.image} alt={entry.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors opacity-40" />
                 </div>
 
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 px-4 pb-6">
                    {/* Title */}
-                   <h2 className="text-base font-bold text-white mb-1 line-clamp-2 leading-tight">
+                   <h2 className="text-xl font-black uppercase tracking-tight text-black mb-2 line-clamp-2 leading-tight group-hover:text-gray-600 transition-colors">
                      {entry.title}
                    </h2>
                    
                    {/* Creator & Date */}
-                   <p className="text-xs text-zinc-400 mb-2 font-medium line-clamp-1">
+                   <p className="text-[0.65rem] text-gray-400 mb-4 font-bold uppercase tracking-widest line-clamp-1">
                      {entry.creator}, {entry.date.split(" ")[2]}
                    </p>
 
                    {/* Rating Line */}
-                   <div className="flex items-center gap-1.5 mt-auto pt-2">
-                     <span className="text-xs font-bold text-zinc-300">{entry.rating}/10</span>
+                   <div className="flex items-center gap-2 mt-auto pt-4 border-t border-gray-50">
+                     <span className="text-xs font-black text-black">{entry.rating}/10</span>
                      <Star size={12} className="text-amber-500 fill-amber-500" />
-                     <span className="text-[10px] text-zinc-500 font-medium ml-1">({entry.category})</span>
+                     <span className="text-[0.65rem] text-gray-300 font-bold uppercase tracking-widest ml-auto">{entry.category}</span>
                    </div>
                 </div>
               </motion.article>
@@ -135,7 +136,7 @@ export default function PovPage() {
         </div>
 
         {filteredEntries.length === 0 && (
-          <div className="text-center py-20 text-zinc-500 text-sm font-medium uppercase tracking-widest">
+          <div className="text-center py-20 text-gray-400 text-sm font-bold uppercase tracking-widest italic">
             More content coming soon.
           </div>
         )}
@@ -145,9 +146,9 @@ export default function PovPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="mt-16 text-center"
+            className="mt-24 text-center"
           >
-             <button className="px-8 py-4 border border-white/10 rounded-full text-zinc-400 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
+             <button className="px-10 py-5 bg-black text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-gray-800 transition-all shadow-xl">
                 Load More Perspectives
              </button>
           </motion.div>

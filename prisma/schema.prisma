@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model BlogPost {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  excerpt   String
+  content   String?
+  category  String
+  readTime  String
+  date      String
+  image     String
+  views     Int      @default(0)
+  status    String   @default("Draft")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PovReview {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  creator   String
+  rating    Float
+  excerpt   String
+  content   String?
+  category  String
+  color     String   @default("blue")
+  image     String
+  date      String   @default("April 2, 2026")
+  views     Int      @default(0)
+  status    String   @default("Draft")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

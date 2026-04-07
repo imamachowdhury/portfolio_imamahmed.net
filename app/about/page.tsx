@@ -47,82 +47,78 @@ const gear = [
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen w-full bg-black">
+    <main className="relative min-h-screen w-full bg-white">
       <Navbar />
       
-      <div className="pt-32 pb-20 px-6 max-w-5xl mx-auto">
+      <div className="pt-40 pb-20 px-6 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-[10px] tracking-[0.5em] font-bold uppercase text-blue-500 mb-4 block">The Genesis</span>
-          <h1 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter text-white mb-16 relative">
-            Capturing <span className="text-zinc-600 underline decoration-blue-500/50 decoration-4 underline-offset-8">Light</span> & Shadow
-            <span className="absolute -top-10 left-0 text-[10rem] font-black italic uppercase tracking-tighter text-white/[0.02] pointer-events-none -z-10 select-none">
-               STORY
-            </span>
-          </h1>
+          <span className="text-[10px] tracking-[0.5em] font-bold uppercase text-gray-400 mb-6 block">The Genesis</span>
           
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
-            <div className="md:col-span-7 space-y-8 text-zinc-400 text-lg leading-relaxed">
-              <p className="text-2xl text-white font-medium italic">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start mb-40">
+            <div className="lg:col-span-12">
+               <h1 className="text-6xl md:text-[8rem] font-black uppercase tracking-tight text-black leading-[0.85] mb-20">
+                  CAPTURING <br />
+                  <span className="text-gray-200">LIGHT</span> & SHADOW
+               </h1>
+            </div>
+
+            <div className="lg:col-span-7 space-y-10 text-gray-500 text-xl leading-relaxed">
+              <p className="text-3xl text-black font-bold tracking-tight">
                 "Every frame is a sentence, every sequence a paragraph, and every film a story waiting to be told."
               </p>
-              <div className="h-px w-24 bg-blue-500/30" />
+              <div className="h-1 w-24 bg-black" />
               <p>
-                I am <span className="text-white font-bold">Imam Ahmed</span>, a multi-faceted creator and the founder of <span className="text-blue-500 font-bold">StoryGhor Creation</span>. My work spans cinematography, political engagement, and a deep-seated passion for history and literature.
+                I am <span className="text-black font-bold">Imam Ahmed</span>, a multi-faceted creator and the founder of <span className="text-zinc-600 font-bold">StoryGhor Creation</span>. My work spans cinematography, political engagement, and a deep-seated passion for history and literature.
               </p>
               <p>
                 As a cinematographer, I manipulate light and shadow to craft emotive visual narratives. As a politician and avid reader, I seek to understand the structural narratives that shape our society. As a learner and tutor, I am dedicated to the continuous cycle of growth—empowering others through the same craft that drives me.
               </p>
             </div>
             
-            <div className="md:col-span-5 relative group">
-               {/* Decorative background glow */}
-               <div className="absolute inset-0 bg-blue-500/20 blur-[60px] rounded-full group-hover:bg-blue-500/30 transition-colors duration-1000" />
-               
-               {/* My Profile Image (Portrait Ratio) */}
-               <div className="relative aspect-[3/4] rounded-3xl bg-zinc-900 border border-white/10 overflow-hidden shadow-2xl">
-                 <div className="w-full h-full bg-[url('/images/profile.jpg')] bg-cover bg-center grayscale hover:grayscale-0 scale-105 group-hover:scale-100 transition-all duration-1000" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
-                 <div className="absolute bottom-6 left-6">
-                    <p className="text-white font-black italic tracking-tighter text-2xl uppercase">IMAM AHMED</p>
-                    <p className="text-blue-400 text-[10px] tracking-[0.2em] font-bold uppercase">Cinematographer</p>
-                 </div>
+            <div className="lg:col-span-5 relative group">
+               {/* My Profile Image with massive rounded corners */}
+               <div className="relative aspect-[3/4] rounded-[3rem] bg-gray-50 overflow-hidden shadow-2xl shadow-black/5">
+                  <div className="w-full h-full bg-[url('/images/profile.jpg')] bg-cover bg-center transition-all duration-1000 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+                  <div className="absolute bottom-10 left-10">
+                     <p className="text-white font-black tracking-tighter text-3xl uppercase">IMAM AHMED</p>
+                     <p className="text-gray-300 text-[10px] tracking-[0.3em] font-bold uppercase">Founder & Cinematographer</p>
+                  </div>
                </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Affiliations Section */}
-        <Affiliations />
+        {/* Affiliations Section with clean spacing */}
+        <div className="py-20 border-y border-gray-100 mb-40 bg-gray-50/50 rounded-[3rem]">
+           <Affiliations />
+        </div>
 
         {/* Gear Section */}
-        <section className="mt-32">
+        <section className="mb-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="relative"
           >
-            {/* Backglow for the whole section */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none -z-10" />
-
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-              <div>
-                <span className="text-[10px] tracking-[0.5em] font-bold uppercase text-zinc-500 mb-4 block">The Arsenal</span>
-                <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-white flex items-center gap-4">
-                  <Zap className="text-blue-500" size={40} /> Current Setup
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+              <div className="max-w-xl">
+                <span className="text-[10px] tracking-[0.5em] font-bold uppercase text-gray-400 mb-6 block">The Arsenal</span>
+                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-[0.85]">
+                  CURRENT <span className="text-gray-300">SETUP</span>
                 </h2>
               </div>
-              <p className="max-w-xs text-zinc-400 text-[10px] uppercase tracking-[0.2em] font-bold leading-relaxed">
+              <p className="max-w-xs text-gray-500 text-[0.7rem] uppercase tracking-[0.3em] font-bold leading-relaxed mb-4">
                 Precision tools built for uncompromised visual storytelling.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {gear.map((item, index) => (
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -130,35 +126,31 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   key={item.name} 
-                  className="group relative rounded-[2rem] bg-zinc-900/50 backdrop-blur-xl border border-white/5 hover:bg-zinc-900 hover:border-blue-500/30 transition-all duration-700 flex flex-col h-full overflow-hidden"
+                  className="group relative rounded-[2.5rem] bg-gray-50 border border-gray-100 hover:bg-white hover:border-black/10 transition-all duration-700 flex flex-col h-full overflow-hidden hover:shadow-2xl hover:shadow-black/5"
                 >
-                  {/* Glowing Sweep Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/0 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
                   {/* Gear Image Display */}
-                  <div className="relative w-full aspect-[4/3] bg-black/80 flex items-center justify-center p-8 group-hover:bg-black transition-colors duration-700 z-10 border-b border-white/5">
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                  <div className="relative w-full aspect-[4/3] bg-gray-100 flex items-center justify-center p-8 group-hover:bg-white transition-colors duration-700 z-10 border-b border-gray-100 shadow-inner">
                     {item.image ? (
                       <Image 
                         src={item.image} 
                         alt={item.name} 
                         fill 
-                        className="object-contain p-8 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] group-hover:scale-[1.15] group-hover:-translate-y-2 group-hover:-rotate-2 transition-transform duration-[800ms] ease-out relative z-10"
+                        className="object-contain p-8 drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)] group-hover:scale-[1.1] transition-transform duration-[800ms] ease-out relative z-10"
                       />
                     ) : (
-                      <item.icon className="text-zinc-700 group-hover:text-blue-500 transition-colors duration-500 relative z-10" size={64} />
+                      <item.icon className="text-gray-300 group-hover:text-black transition-colors duration-500 relative z-10" size={64} />
                     )}
                   </div>
                   
                   {/* Gear Info */}
-                  <div className="p-8 flex flex-col flex-grow z-10 relative">
-                    <div className="mb-4">
-                      <span className="inline-block px-3 py-1 rounded-sm bg-blue-500/10 border-l-2 border-blue-500 text-[9px] tracking-[0.2em] font-bold uppercase text-blue-400">
+                  <div className="p-10 flex flex-col flex-grow z-10 relative">
+                    <div className="mb-6">
+                      <span className="inline-block px-3 py-1 rounded-full bg-black text-[0.6rem] tracking-[0.2em] font-bold uppercase text-white">
                         {item.name.split(' ')[0]}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-black italic text-white mb-3 uppercase tracking-tight group-hover:text-blue-400 transition-colors">{item.name}</h3>
-                    <p className="text-zinc-500 text-xs leading-relaxed font-medium mt-auto group-hover:text-zinc-400 transition-colors">{item.description}</p>
+                    <h3 className="text-3xl font-black text-black mb-4 uppercase tracking-tighter group-hover:text-gray-600 transition-colors">{item.name}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed font-medium mt-auto transition-colors">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -170,20 +162,19 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="mt-16 p-8 rounded-[2rem] bg-gradient-to-r from-blue-900/20 to-zinc-900 border border-blue-500/20 flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden"
+              className="mt-20 p-12 rounded-[3rem] bg-black text-white flex flex-col md:flex-row justify-between items-center gap-10 relative overflow-hidden"
             >
-               <div className="absolute right-0 top-0 w-64 h-64 bg-blue-500/10 blur-[60px] rounded-full pointer-events-none" />
-               <div className="flex items-center gap-4 relative z-10">
-                 <div className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+               <div className="flex items-center gap-6 relative z-10">
+                 <div className="relative flex h-4 w-4">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-4 w-4 bg-white"></span>
                  </div>
                  <div>
-                    <span className="text-[10px] tracking-[0.3em] font-bold uppercase text-zinc-300 block mb-1">Status</span>
-                    <span className="text-xs tracking-[0.2em] font-black uppercase text-white">Available for Bookings 2026</span>
+                    <span className="text-[0.7rem] tracking-[0.5em] font-bold uppercase text-zinc-500 block mb-1">Status</span>
+                    <span className="text-xl tracking-tight font-black uppercase">Available for Bookings 2026</span>
                  </div>
                </div>
-               <button className="px-8 py-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] hover:bg-blue-500 hover:text-white transition-all duration-300 relative z-10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+               <button className="px-10 py-5 bg-white text-black text-[0.7rem] font-black uppercase tracking-[0.3em] hover:bg-gray-200 transition-all rounded-full shadow-xl">
                   Collaborate Now
                </button>
             </motion.div>

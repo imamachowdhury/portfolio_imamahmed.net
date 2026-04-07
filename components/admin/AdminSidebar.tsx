@@ -31,26 +31,26 @@ export default function AdminSidebar() {
       {/* Mobile Toggle Button */}
       <button 
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="md:hidden fixed top-4 right-4 z-50 p-2 bg-zinc-900 border border-white/10 rounded-lg text-white"
+        className="md:hidden fixed top-6 right-6 z-50 p-3 bg-white border border-gray-100 rounded-2xl text-black shadow-xl"
       >
         {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
       {/* Sidebar Container */}
       <aside className={`
-        fixed inset-y-0 left-0 z-40 w-64 bg-zinc-950 border-r border-white/10 transform transition-transform duration-300 ease-in-out flex flex-col
+        fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-gray-100 transform transition-transform duration-500 ease-in-out flex flex-col
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} 
         md:translate-x-0 md:static md:h-screen shrink-0
       `}>
         {/* Brand Header */}
-        <div className="h-20 flex items-center px-6 border-b border-white/5">
-          <Link href="/admin" className="text-xl font-black italic tracking-tighter text-white">
-            IMAM<span className="text-blue-500">ADMIN</span>
+        <div className="h-28 flex items-center px-8 border-b border-gray-50">
+          <Link href="/admin" className="text-2xl font-black italic tracking-tighter text-black uppercase">
+            IMAM<span className="text-gray-300">ADMIN</span>
           </Link>
         </div>
 
         {/* Navigation Links */}
-        <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-1">
+        <nav className="flex-1 overflow-y-auto py-10 px-6 space-y-2">
           {sidebarLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -59,14 +59,14 @@ export default function AdminSidebar() {
                 href={link.href}
                 onClick={() => setIsMobileOpen(false)}
                 className={`
-                  flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-sm font-medium
+                  flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 text-[0.7rem] font-black uppercase tracking-[0.2em]
                   ${isActive 
-                    ? "bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]" 
-                    : "text-zinc-400 hover:text-white hover:bg-white/5"
+                    ? "bg-black text-white shadow-2xl shadow-black/20" 
+                    : "text-gray-400 hover:text-black hover:bg-gray-50"
                   }
                 `}
               >
-                <link.icon size={18} className={isActive ? "text-white" : "text-zinc-500"} />
+                <link.icon size={18} className={isActive ? "text-white" : "text-gray-300 group-hover:text-black transition-colors"} />
                 {link.name}
               </Link>
             );
@@ -74,10 +74,10 @@ export default function AdminSidebar() {
         </nav>
 
         {/* Footer Actions */}
-        <div className="p-4 border-t border-white/5">
+        <div className="p-8 border-t border-gray-50">
           <Link 
             href="/"
-            className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-zinc-400 rounded-xl hover:text-white hover:bg-red-500/10 hover:text-red-400 transition-colors"
+            className="flex items-center gap-4 px-5 py-4 text-[0.7rem] font-black uppercase tracking-[0.2em] text-gray-400 rounded-2xl hover:text-black hover:bg-gray-50 transition-all"
           >
             <LogOut size={18} />
             Back to Site
@@ -89,7 +89,7 @@ export default function AdminSidebar() {
       {isMobileOpen && (
         <div 
           onClick={() => setIsMobileOpen(false)}
-          className="md:hidden fixed inset-0 z-30 bg-black/60 backdrop-blur-sm"
+          className="md:hidden fixed inset-0 z-30 bg-black/5 backdrop-blur-sm"
         />
       )}
     </>
